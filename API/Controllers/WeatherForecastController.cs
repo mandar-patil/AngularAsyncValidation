@@ -36,9 +36,8 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet("emailexists")]
-        public ActionResult<bool> CheckEmailExistsAsync([FromQuery] string email)
-        {
-            
-            return registeredUsers.FirstOrDefault(x => x == email) != null;
-        }
+    public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
+    {
+        return registeredUsers.FirstOrDefault(x => x == email) != null;
+    }
 }
