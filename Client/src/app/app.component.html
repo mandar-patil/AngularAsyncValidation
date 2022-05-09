@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center mt-5">
+  <div class="col-3">
+    <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+      </div>
+
+      <div class="form-label-group">
+        
+        <input type="displayName" id="displayName" class="form-control" 
+        placeholder="Display Name" required="" autofocus="" formControlName="displayName">
+        <label for="displayName">Display Name</label>
+      </div>
+      <div class="form-label-group">
+        <input type="email" id="inputEmail" class="form-control" 
+        placeholder="Email address" required="" autofocus="" formControlName="email">
+        <label for="inputEmail">Email address </label>
+
+        <div *ngIf="(!registerForm?.controls?.email?.valid && registerForm?.controls?.email?.touched)">
+          <span *ngIf="registerForm?.controls?.email?.errors?.required">Email is required.</span>
+          <span *ngIf="registerForm?.controls?.email?.errors?.pattern">Invalid email address</span>
+          </div>
+          <div *ngIf="(!registerForm?.controls?.email?.valid && registerForm?.controls?.email?.dirty)" >
+            <span *ngIf="registerForm?.controls?.email?.errors?.emailExists">Email address is in use</span>
+        </div>
+
+      </div>
+      <div class="form-label-group">
+        <input type="password" id="inputPassword" class="form-control" 
+        placeholder="Password" required="">
+        <label for="inputPassword">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      
+    </form>
+    
+  </div>
+</div>
